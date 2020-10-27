@@ -272,14 +272,6 @@ if __name__ == "__main__":
     mapObj = Map.Map(width, height, [50,3,0])#[20,3,60])
     mapObj.showMap()
     animalList, speciesAmount, totalNum = AnimalPlacer.initBiota(occupyPercent, mapObj)
-    '''
-    print(AnimalPlacer.maxStartLen)
-    print(AnimalPlacer.maxStartLen * totalNum * 5)
-    print(int(mapObj.square * 0.77))
-    print(speciesAmount)
-    for animal in animalList:
-        print(animal.__class__.__name__)
-    '''
     animalMatrix = AnimalPlacer.placeAllAnimals(mapObj, animalList, occupyPercent)
     
     for i in range(mapObj.width):
@@ -289,24 +281,4 @@ if __name__ == "__main__":
             else:
                 print(" ",end="")
         print()       
-    
-    
-    '''
-    num = 0
-    i = 0
-    while i < totalNum:
-        flt = random.random() * 100
-        j = 0
-        lastPercent = 0
-        while not(lastPercent < flt <= (lastPercent + animalRatio[j])):
-            lastPercent += animalRatio[j]
-            j += 1
-        if side == "Hunter":
-            creature = AnimalPlacer.hunterSpecies[j]
-            speciesAmount[j] += 1 
-        else:
-            creature = AnimalPlacer.praySpecies[j]
-            speciesAmount[j] += 1 
-        animalList.append(creature())
-        i += 1
-    '''    
+      
