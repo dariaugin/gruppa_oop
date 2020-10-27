@@ -129,97 +129,10 @@ class Map:
                     self.groundMatrix[i][j] = Map.terrain["ground"]
         
         self.placeObj(2)
-    
-    '''    
+      
     def addGrass(self):
-        while self.grassCellNum < 
-    '''
-    '''
-    def findFreePlaces(self):
-        size = [self.height, self.width]
-        lines = ["-","|"]
-        
-        if self.height <= self.width:
-            k = 0
-        else: k = 1
-        
-        separators = []
-        self.barriers = sorted(self.barriers, key = lambda elm : elm[k])
-        barrierNum = len(self.barriers)
-        lastLeft = 0
-        lastRight = 0
-        i = 0 
-        for barrier in self.barriers:
-            left = barrier[k] - barrier[k+2]
-            right = barrier[k] + barrier[k+2]
-            if lastRight < right:
-                separators.append((right, i))
-            if lastRight < left:
-                separators.append((left, i))
-            lastRight = right
-            i += 1
-        separators = sorted(separators)
-        while True:
-            if separators[0][0] < 0:
-                separators.pop(0)
-            if separators[-1][0] >= size[not k]:
-                separators.pop(-1)
-            else: break
-        print(separators)
-        for s in separators:    
-            j = 0
-            while j < size[k]:
-                if k:
-                    self.groundMatrix[j][s[0]] = lines[k]
-                else: 
-                    self.groundMatrix[s[0]][j] = lines[k]
-                j += 1                    
-        
-        last = 0
-        i = 1
-        subseparators = []
-        sepLen = len(separators)
-        while i < sepLen:
-            sub = []
-            left = self.barriers[separators[last][1]]
-            right = self.barriers[separators[i][1]]
-            
-            for side in (left, right):
-                if side < size[k]:
-                    ind = k + 2
-                    sub.append(side[k] + side[ind])
-                if side >= 0:
-                    ind = k + 2
-                    sub.append(side[k] - side[ind])
-                
-            subseparators.append(sorted(sub))
-            last = separators[i][1]
-            i += 1
-        
-        last = 0
-        i = 1
-        while i < sepLen:        
-            sub = subseparators[0]
-            for s in sub:
-                j = separators[last][0] 
-                while j < separators[i][0]:
-                    if k:
-                        self.groundMatrix[s][j] = lines[not k]
-                    else: 
-                        self.groundMatrix[j][s] = lines[not k]                    
-                    j += 1
-                
-            last = i
-            i += 1
-        print("subseparators:")
-        for s in subseparators:
-            print(s)
-        
-            
-
-        #self.placesList.append()
-        #self.freeSquare = sum([(sqr[2] - sqr[0]) * (sqr[3] - sqr[1]) for sqr in self.placesList])
-        '''
+        #while self.grassCellNum < 
+        pass
     
     def showMapColor(self):
         kernel32 = ctypes.windll.kernel32
